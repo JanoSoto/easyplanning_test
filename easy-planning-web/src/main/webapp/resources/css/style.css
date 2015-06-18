@@ -1,0 +1,398 @@
+/* 
+    Created on : 02-05-2015, 18:18:59
+    Author     : jano
+*/
+html .ui-layout-container{
+    overflow-x: hidden ;
+}
+.ui-widget{
+    font-family: Helvetica, Arial, sans-serif;
+}
+body, p, a, li{
+    font-size: 14px !important;
+    line-height: 1.42857143;    
+}
+.horario-encuesta{
+    font-weight: bold;
+    text-align: center;
+}
+.body-full{
+    padding-right: 0px;
+    padding-left: 0px;
+    min-height: 100%;
+    margin-bottom: -50%;
+}
+.banner{
+    background-color: #0052cc;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    color: #fff;
+}
+.banner>.navbar{
+    margin-bottom: 0px;
+    border-bottom: 1px solid #ff7319;
+}
+.menu-nav{
+    background-color: #ff7319;
+    border-color: #fff;
+}
+.navbar-default .navbar-nav>li>a{
+    color: #fff;
+    font-size: 16px;
+}
+.dropdown-menu{
+    background-color: #ff7319;
+}
+.dropdown-menu>li>a{
+    background-color: #ff7319;
+    color: #fff;
+}
+.dropdown-menu>li>a:hover{
+    color: #ff7319;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+    color: #fff;
+    background-color: #ff7319;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    font-weight: bold;
+    color: #fff;
+}
+.banner .ui-widget-content{
+    background-color: #fff;
+}
+.new-body{
+    border: none !important;
+    border-radius: 0px;
+    min-height: 100%;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    background-image: linear-gradient(to bottom,#fff 0,#e0e0e0 100%);
+    border: 1px solid #eee;
+}
+.table-footer{
+    background-image: linear-gradient(to bottom,#fff 0,#e0e0e0 100%) !important;
+    border: 1px solid #eee !important;    
+}
+.ui-widget-header{
+    background-image: linear-gradient(to bottom,#fff 0,#e0e0e0 100%) !important;
+    border: 1px solid #eee !important;
+}
+.ui-widget-content{
+    border: 1px solid #eee;
+}
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight{
+    border: 1px solid #eee;
+    background: #ff7319 linear-gradient(top, rgba(0,0,0,0.4), rgba(0,0,0,0));
+    background: #ff7319 -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.4)), to(rgba(0,0,0,0)));
+    background: #ff7319 -moz-linear-gradient(top, rgba(0,0,0,0.4), rgba(0,0,0,0));
+    color: #fff;
+    text-shadow: none;
+}
+.ui-state-highlight a, .ui-widget-content .ui-state-highlight a, .ui-widget-header .ui-state-highlight a {
+    color: #fff;
+}
+.ui-datatable-odd {
+    background: none repeat scroll 0 0 #eee;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover{
+    background: #ff7319 linear-gradient(top, rgba(0,0,0,0.25), rgba(0,0,0,0));
+    background: #ff7319 -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.25)), to(rgba(0,0,0,0)));
+    background: #ff7319 -moz-linear-gradient(top, rgba(0,0,0,0.25), rgba(0,0,0,0));
+    color: #fff;
+}
+.ui-state-hover a{
+    color: #fff !important;
+}
+.ui-state-hover a:hover{
+    text-decoration: underline;
+}
+.img-easyplanning{
+    height: 10em;
+}
+.img-usach{
+    height: 10em;
+}
+
+#horarioAsignacion{
+    margin-left: 3%;
+    padding-left: 1%;
+}
+
+.headerBloque{
+    background-color: #0052cc;
+    height: 40px;
+    margin: 0;
+    text-align: center;
+}
+.headerMyHorario{
+    margin-right: 0px !important;
+}
+
+.horarioBloque{
+    background-color: #ff7319;
+    height: 55px;
+    margin-right: 0 !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: central;
+    color: #fff !important;
+    padding: 0;
+}
+.ui-button {
+    margin-right: 0 !important;
+}
+.horario-title{
+    color: #fff;
+}
+.horario-title-bloque{
+    margin-top: 10%;
+    color: #fff;
+}
+.bloque{
+    background-color: whitesmoke;
+    height: 55px;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    white-space: normal;
+}
+#footer{
+    background-color: #0052cc;
+    color: #fff;
+}
+#wraper{
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+    margin: 0 auto -60px;
+    /* Pad bottom by footer height */
+    //padding: 0 0 60px;
+}
+.panel-default>.panel-heading{
+    background-color: #ff7319;
+    color: #fff;
+    border: none;
+}
+.panel-default>.panel-body{
+    background-color: #0052cc;
+    color: #fff;
+    padding-top: 5%;
+}
+.panel-default{
+    margin-top: 20%;
+    border: none;
+}
+.label-form{
+    color: #fff;
+}
+.login-form{
+    color: #0052cc;
+}
+.btn-default{
+    background-color: #ff7319;
+    color: #fff;
+    border: none;
+}
+#banner-bottom{
+    padding-bottom: 2em;
+    background-color: #ff7319;
+}
+#btn-sesion{
+    background-color: #fff;
+    color: #ff7319;
+    margin-top: 3%;
+}
+#btn-sesion:hover{
+    background-color: #ff7319;
+    color: #fff;
+    border: #fff solid 1px;
+}
+.panel-tabla .ui-widget-content{
+    background-color: transparent !important;
+    border-color: transparent !important;
+    text-align: left;
+}
+.panel-item{
+    margin-left: 5em;
+}
+.btn-center{
+    margin-left: 50%;
+    color: #269abc !important;
+}
+.btn-center-text{
+    margin-left: 33%;
+    color: #269abc !important;
+}
+.btn-center-text a:hover{
+    text-decoration: none !important;
+    font-weight: bold !important;
+}
+.btn-center>span:hover{
+    color: #0052cc;
+}
+.breadcrumb{
+    background-color: #fff;
+}
+.breadcrumb>li>a{
+    color: #ff7319;
+}
+.breadcrumb>.active{
+    color: #aaa;
+}
+
+.bloqueVacio{
+    background-color: #ffffff;
+    height: 55px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    border: #ddd solid 1px;
+    white-space: normal;
+    text-align: center;
+}
+
+.panel-no-border{
+    border-color: transparent !important;
+}
+.panel-no-border>.ui-widget-content{
+    border: none;
+}
+.panel-body-index{
+    background-color: #fff !important;
+}
+.panel-index{
+    border: rgba(255,115,25,0.5) solid 1px !important;
+    margin-top: 10% !important;
+}
+.panel-heading-index{
+    background-color: rgba(255,115,25,1) !important;
+}
+.panel-heading-index>p{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 0px !important;
+    text-shadow: 1px 1px 1px #ff7319;
+}
+.panel-body-index>ul{
+    color: #ff7319;
+}
+.panel-body-index>ul>li>a{
+    color: #ff7319;
+    font-size: 14px;
+}
+.panel-body-index>ul>li>a:hover{
+    text-decoration: none;
+    font-weight: bold;
+}
+.tooltip-index{
+    max-width: 30em;
+    text-align: justify;
+}
+.opcion-profesor{
+    background-color: #ff7319;
+    margin-top: 10%;
+    text-align: center;
+    padding: 5em 5em;
+}
+.opcion-profesor>a{
+    color: #fff;
+    font-size: 1.5em !important;
+}
+.opcion-profesor>a:hover{
+    text-decoration: none;
+    font-weight: bold;
+}
+.horarioprofesor{
+    height: 60px !important;
+}
+.logut-link{
+}
+.logout-div{
+    margin-left: 15%;
+    margin-top: 5%;
+}
+.logut-link>.logout-div>form>a{
+    color: #fff;
+}
+.logut-link>.logout-div>form>a:hover{
+    text-decoration: none;
+    font-weight: bold;
+}
+#nav-scrollspy{
+    position: fixed;
+    top: 35%;
+    right: 0%;
+}
+.nav-side-fixed>li>a{
+    padding: 5px 15px;
+    color: #ff7319;
+}
+.nav-side-fixed>li>a:hover{
+    background-color: #ff7319;
+    color: #fff;
+}
+.title{
+    color: #ff7319;
+}
+.help-body{
+    color: #0052cc;
+    font-size: 14px;
+}
+.ui-picklist .ui-picklist-list{
+    width: 45em !important;
+}
+.one-list-box{
+    margin: 0;
+    width: 100% !important;
+}
+.logut{
+    color: #fff;
+}
+.column-center-text{
+    text-align: center;
+}
+.button-padding{
+    padding: 0.3em 0.7em;
+}
+.button-padding:hover{
+    text-shadow: none;
+}
+.tab-panel-link{
+    color: #ff7319 !important;
+}
+.well{
+    background-color: rgba(238, 238, 238, 0.4);
+}
+.btn-actual{
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    color: rgba(255, 115, 25, 0.7) !important;
+}
+.asignatura-bloque{
+    font-size: 11px !important;
+}
+#div-tabla-disponibilidad{
+    padding: 0;
+}
+.index-profesor{
+    color: #fff;
+    font-size: 1.5em !important;
+    margin-right: 3%;
+}
+#panel-no-margin{
+    margin-top: 0;
+}
+.panel-title>a:hover{
+    text-decoration: none;
+    font-weight: bold;
+}
+.panel-title>a:focus{
+    text-decoration: none;
+    font-weight: normal;
+}
+.ui-selectoneradio label{
+    margin-right: 2em;
+}

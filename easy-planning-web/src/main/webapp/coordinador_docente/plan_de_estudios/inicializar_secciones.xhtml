@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Iniciar Planificación - Easy Planning"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-10">
+                        <ol class="breadcrumb">
+                            <li><a href="/easy-planning-web/faces/coordinador_docente/index.xhtml">Inicio</a></li>
+                            <li><a href="#">Planificación Docente</a></li>
+                            <li class="active">Iniciar Planificación</li>
+                        </ol>
+                    </div>                 
+                </div>
+                <div class="row">
+                    <div class="col-md-11 col-md-offset-1">
+                        <h:form enctype='multipart/form-data'>
+                            <h:outputLabel value="Seleccione las Carreras que va a planificar este semestre"/>
+                            <p:pickList value="#{cargarPlanDeEstudios.versionPickList}" var="vers" itemLabel="#{vers.planEstudio.carrera.nombre}-#{vers.planEstudio.codigo}.#{vers.anio}.#{vers.version} (#{cargarPlanDeEstudios.getJornada(vers.planEstudio.jornada)})" 
+                                        itemValue="#{vers}" showCheckbox="true" 
+                                        converter="VersionPlanConverter" showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains"/>
+                            
+                            <!--<p:commandButton class="button-padding" value="Iniciar Planificación" action="" ajax="false"/>-->
+                            <p:commandButton value="Iniciar Planificación" actionListener="#{cargarPlanDeEstudios.iniciarPlanificacion()}" update="@all">
+                                <p:confirm header="Atención" message="Una vez iniciada la planificación la selección de planes asociados al semestre no se podrá volver a modificar" icon="ui-icon-alert" />
+                            </p:commandButton>
+
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Confirmar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                        </h:form>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </ui:define>
+    </ui:composition>
+</html>

@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
+    
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Asignaturas ofrecidas a Profesores - Easy Planning"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-10">
+                        <ol class="breadcrumb">
+                            <li><a href="/easy-planning-web/faces/coordinador_docente/index.xhtml">Inicio</a></li>
+                            <li><a href="#">Profesores</a></li>
+                            <li class="active">Asignaturas Propuestas</li>
+                        </ol>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h:form>
+                            <br />
+                            <h4 class="title">Seleccione el profesor al que desea editar la encuesta:</h4>
+                            <br />
+                            
+                            <p:dataTable id="tablaProfesor" value="#{profesorController.items}" 
+                                    var="item"
+                                    paginator="true"
+                                    selection="#{profesorController.profesorSeleccionado}"
+                                    rowKey="#{item.rutProfesor}"
+                                    sortBy="#{item.apellido}"
+                                    rows="20"
+                                    rowsPerPageTemplate="20,30,40,50,60,70,80"
+                                    widgetVar="profesorTable"
+                                    emptyMessage="No se han encontrado Profesores"
+                                    >                                                               
+                                
+                                <f:facet name="header">
+                                    <p:commandButton id="emailButton" icon="ui-icon-mail-closed"  value="Enviar notificación" actionListener="#{emailController.enviarNotificacion}" update=":growl"/>
+                                </f:facet>
+                                <p:column style="text-align: center" width="10%" selectionMode="multiple">                                    
+                                </p:column>
+                                <p:column class="column-center-text" filterBy="#{item.nombre} #{item.apellido}" filterMatchMode="contains" colspan="2" sortBy="#{item.apellido}">
+                                    <f:facet name="header">
+                                        <h:outputText value="Profesor"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nombre} #{item.apellido}"/>
+                                </p:column>
+                                <p:column headerText="Asignaturas Ofrecidas" colspan="5">
+                                    <ul>
+                                        <ui:repeat var="asignatura" value="#{checklistController.asignaturasSemestrePasado(item.rutProfesor)}">
+                                            <li><h:outputText value="#{asignatura.nombre}"/></li>
+                                        </ui:repeat>
+                                    </ul>
+                                </p:column>
+                                <p:column headerText="Modificar" colspan="1" >
+                                    <h:link outcome="/coordinador_docente/encuesta/editar_encuesta.xhtml" class="btn-center">                 
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        <f:param name="id" value="#{item.rutProfesor}" />
+                                    </h:link>
+                                </p:column>
+                            </p:dataTable>
+
+                        </h:form>        
+                    </div>
+                </div>
+                    
+            </div>
+            
+        </ui:define>
+    </ui:composition>
+    
+    
+</html>
+
+
