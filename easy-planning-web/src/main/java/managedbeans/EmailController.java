@@ -136,7 +136,7 @@ public class EmailController implements Serializable {
             
             for(Profesor p : listaProfesor){                
                 
-                String emailProfesor = p.getMail();               
+                //String emailProfesor = p.getMail();               
                 String contenido = "Estimado Profesor:<br><br>";
                 contenido = contenido +
                 "El Comité de Docencia estará muy agradecido de que conteste la "
@@ -166,7 +166,7 @@ public class EmailController implements Serializable {
                         ejbCheck.create(check);
                     }                            
                 }
-                
+                /*
                 if(emailProfesor != null){                    
                     enviarEmail(origen, nombre, pass, emailProfesor, asunto, contenido);                    
                 }
@@ -175,6 +175,7 @@ public class EmailController implements Serializable {
                     mensaje += " no tiene mail asociado";
                     JsfUtil.addErrorMessage(mensaje);
                 }
+                        */
             }
         }else{
             JsfUtil.addErrorMessage("No has seleccionado ningún profesor");

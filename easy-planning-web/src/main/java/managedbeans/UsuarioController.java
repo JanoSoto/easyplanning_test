@@ -5,6 +5,7 @@
  */
 package managedbeans;
 
+import business.UsuariosLocal;
 import entities.Tipo;
 import entities.Usuario;
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class UsuarioController implements Serializable{
     private boolean error = false;
     private List<Tipo> roles;
     @EJB
-    private UsuarioFacadeLocal ejbUsuario;
+    private UsuariosLocal usuarioBussines;
 
     public List<Tipo> getRoles() {
         return roles;
@@ -143,9 +144,9 @@ public class UsuarioController implements Serializable{
                 request.login(nombre, password);
                 System.out.println("SessionUtil: SessionScope created for " + nombre);
                 JsfUtil.addSuccessMessage("Logeado con éxito");
-                Usuario usuario = ejbUsuario.findByUsername(nombre);
+                Usuario usuario = usuarioBussines.findByUid(nombre);
                 setRoles(usuario.getRoles());
-                System.out.println("nombre de usuario: "+usuario.getUsername()+" - rol: "+usuario.getRoles().get(0).getTipo());
+                System.out.println("nombre de usuario: "+usuario.getNombre_usuario()+" - rol: "+usuario.getRoles().get(0).getTipo());
                 if(usuario.getRoles().get(0).getTipo().equals("COORDINADOR DOCENTE")){
                     FacesContext.getCurrentInstance().getExternalContext().redirect("/easy-planning-web/faces/coordinador_docente/index.xhtml");
                 }

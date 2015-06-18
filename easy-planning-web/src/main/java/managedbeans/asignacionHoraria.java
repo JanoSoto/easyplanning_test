@@ -330,10 +330,11 @@ public class asignacionHoraria implements Serializable {
     public void setHorarioSelected(String horarioSelected) {
         this.horarioSelected = horarioSelected;
     }
-    
+   /* 
     public String getNombreCompleto(Profesor profesor){
         return profesor.getNombre()+" "+profesor.getApellido();
     }
+    */
     
     public int getAnioSelected() {
         this.anioSelected = this.paramSemAno.find(1L).getAnoActual();
@@ -433,9 +434,11 @@ public class asignacionHoraria implements Serializable {
             if (result == null){
                 return "";
             }
+            /*
             if(result.getProfesor().getAlias() == null){
                 return "- "+result.getProfesor().getNombre()+" "+result.getProfesor().getApellido();            
             }
+                    */
             else{
                 return "- "+result.getProfesor().getAlias();
             }

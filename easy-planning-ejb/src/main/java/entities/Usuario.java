@@ -27,7 +27,9 @@ import javax.validation.constraints.Size;
 @Entity
 @NamedQueries({
     @NamedQuery(name="Usuario.findByUsername",
-            query="SELECT u FROM Usuario u WHERE u.username = :username")
+            query="SELECT u FROM Usuario u WHERE u.username = :username"),
+    @NamedQuery(name = "Usuario.findByUid",
+            query = "SELECT u FROM Usuario u WHERE u.uid = :uid")
 })
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
