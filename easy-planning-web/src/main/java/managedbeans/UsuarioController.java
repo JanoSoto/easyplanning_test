@@ -6,7 +6,7 @@
 package managedbeans;
 
 import business.UsuariosLocal;
-import entities.Tipo;
+import entities.TipoUsuario;
 import entities.Usuario;
 import java.io.IOException;
 import java.io.Serializable;
@@ -42,15 +42,15 @@ public class UsuarioController implements Serializable{
     private String nombre;
     private String password;
     private boolean error = false;
-    private List<Tipo> roles;
+    private List<TipoUsuario> roles;
     @EJB
     private UsuariosLocal usuarioBussines;
 
-    public List<Tipo> getRoles() {
+    public List<TipoUsuario> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Tipo> roles) {
+    public void setRoles(List<TipoUsuario> roles) {
         this.roles = roles;
     }
 
@@ -104,7 +104,8 @@ public class UsuarioController implements Serializable{
         FacesContext context = FacesContext.getCurrentInstance();
         ExternalContext externalContext = context.getExternalContext();
         HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
-
+        //LoginContext lc = null;
+        
         try {
             if(!hasIdentity()) {
                 //Autenticación con LDAP
@@ -141,22 +142,24 @@ public class UsuarioController implements Serializable{
                 //FIN AUTENTICACIÓN LDAP
                 
                 
-                request.login(nombre, password);
-                System.out.println("SessionUtil: SessionScope created for " + nombre);
-                JsfUtil.addSuccessMessage("Logeado con éxito");
-                Usuario usuario = usuarioBussines.findByUid(nombre);
-                setRoles(usuario.getRoles());
-                System.out.println("nombre de usuario: "+usuario.getNombre_usuario()+" - rol: "+usuario.getRoles().get(0).getTipo());
-                if(usuario.getRoles().get(0).getTipo().equals("COORDINADOR DOCENTE")){
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("/easy-planning-web/faces/coordinador_docente/index.xhtml");
+                request.login(nombre, jsonObject.getString("pass_ok"));
+                if(valido_response){
+                    System.out.println("SessionUtil: SessionScope created for " + nombre);
+                    JsfUtil.addSuccessMessage("Logeado con éxito");
+                    Usuario usuario = usuarioBussines.findByUid(nombre);
+                    setRoles(usuario.getRoles());
+                    System.out.println("nombre de usuario: "+usuario.getNombre_usuario()+" - rol: "+usuario.getRoles().get(0).getTipo());
+                    if(usuario.getRoles().get(0).getTipo().equals("COORDINADOR DOCENTE")){
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("/easy-planning-web/faces/coordinador_docente/index.xhtml");
+                    }
+                    else if(usuario.getRoles().get(0).getTipo().equals("PROFESOR")){
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("/easy-planning-web/faces/profesor/index.xhtml");
+                    }
+                    else{
+                        System.out.println("no se sabe el rol");
+                    }
+                    error = false;
                 }
-                else if(usuario.getRoles().get(0).getTipo().equals("PROFESOR")){
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("/easy-planning-web/faces/profesor/index.xhtml");
-                }
-                else{
-                    System.out.println("no se sabe el rol");
-                }
-                error = false;
             } 
             else {
                 System.out.println("SessionUtil: User allready logged");

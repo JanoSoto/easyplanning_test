@@ -7,6 +7,7 @@ package entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,12 +21,22 @@ import javax.persistence.ManyToOne;
  * @author jano
  */
 @Entity
-public class Tipo implements Serializable {    
+public class TipoUsuario implements Serializable {    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_tipo;
     private String nombre_tipo;
+    @Column(name="pass")
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Long getId_tipo() {
         return id_tipo;

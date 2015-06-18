@@ -27,7 +27,7 @@ import javax.validation.constraints.Size;
 @Entity
 @NamedQueries({
     @NamedQuery(name="Usuario.findByUsername",
-            query="SELECT u FROM Usuario u WHERE u.username = :username"),
+            query="SELECT u FROM Usuario u WHERE u.nombre_usuario = :username"),
     @NamedQuery(name = "Usuario.findByUid",
             query = "SELECT u FROM Usuario u WHERE u.uid = :uid")
 })
@@ -55,13 +55,13 @@ public class Usuario implements Serializable {
     private boolean activo = true;
 
     @OneToMany
-    private List<Tipo> tipos;
+    private List<TipoUsuario> tipos;
 
-    public List<Tipo> getRoles() {
+    public List<TipoUsuario> getRoles() {
         return tipos;
     }
 
-    public void setRoles(List<Tipo> roles) {
+    public void setRoles(List<TipoUsuario> roles) {
         this.tipos = roles;
     }
     
@@ -145,11 +145,11 @@ public class Usuario implements Serializable {
         this.direccion_usuario = direccion_usuario;
     }
 
-    public List<Tipo> getTipos() {
+    public List<TipoUsuario> getTipos() {
         return tipos;
     }
 
-    public void setTipos(List<Tipo> tipos) {
+    public void setTipos(List<TipoUsuario> tipos) {
         this.tipos = tipos;
     }
 }
