@@ -6,6 +6,7 @@
 package managedbeans;
 
 import business.UsuariosLocal;
+import entities.Profesor;
 import entities.TipoUsuario;
 import entities.Usuario;
 import java.io.IOException;
@@ -29,6 +30,7 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.primefaces.json.JSONObject;
+import sessionbeans.ProfesorFacadeLocal;
 
 /**
  *
@@ -45,6 +47,10 @@ public class UsuarioController implements Serializable{
     private List<TipoUsuario> roles;
     @EJB
     private UsuariosLocal usuarioBussines;
+    @EJB
+    private UsuarioFacadeLocal facadeLocal;
+    @EJB
+    private ProfesorFacadeLocal profesorFacade;
 
     public List<TipoUsuario> getRoles() {
         return roles;
@@ -83,6 +89,40 @@ public class UsuarioController implements Serializable{
  
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    public List<Usuario> getAllPorfes(){
+        List<Usuario> usuarios = facadeLocal.findAll();
+        List<Profesor> profesores = profesorFacade.findAll();
+        if(profesores!=null){
+            ArrayList<Usuario> usuariosProfes = new ArrayList<>();
+            for(Usuario u : usuarios){
+                for(Profesor p : profesores){
+                    if(u.getRut_usuario().equals(p.getRutProfesor())){
+                        usuariosProfes.add(u);
+                    }
+                }
+            }       
+            return usuariosProfes;
+        }
+        else{
+            return null;
+        }
+    }
+    
+    public String getAlias(String rut){
+
+        if(profesorFacade.find(rut)!=null){
+            if(profesorFacade.find(rut).getAlias()==null){
+                return "";
+            }
+            else{
+                return profesorFacade.find(rut).getAlias();
+            }
+        }
+        else{
+            return "";
+        }
     }
     
     public String MD5(String md5) {
@@ -202,6 +242,10 @@ public class UsuarioController implements Serializable{
             }
         }
         return roles;
+    }
+    
+    public Usuario getUsuario(String rut){
+        return facadeLocal.find(rut);
     }
     
 }

@@ -32,13 +32,14 @@ and open the template in the editor.
                 <c:set var="profesor_id" value="#{param['id']}" scope="request"/>
                 <c:if test="#{not empty profesor_id}">
                     #{profesorController.setProfesorById(profesor_id)}
+                    <c:set var="usuario" value="#{usuarioController.getUsuario(profesor_id)}" />
                 </c:if>
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3"> 
                         <h4 class="text-center">Agregar o editar alias de Profesor</h4>
                         <h:form id="aliasAsignaturaForm">
                             <strong><h:outputText value="Nombre"/></strong>
-                            <b:inputText value="#{profesorController.profesor.nombre} #{profesorController.profesor.apellido}" disabled="true"/>
+                            <b:inputText value="#{usuario.nombre_usuario} #{usuario.apellido_usuario_paterno} #{usuario.apellido_usuario_materno}" disabled="true"/>
                             <br/>
                             <strong><h:outputText value="Alias"/></strong>
                             <b:inputText  value="#{profesorController.profesor.alias}" maxlength="10"/>
