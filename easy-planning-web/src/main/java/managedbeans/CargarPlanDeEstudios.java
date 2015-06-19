@@ -617,28 +617,34 @@ public class CargarPlanDeEstudios implements Serializable {
             JsfUtil.addSuccessMessage("Nueva versión del plan "+vp.getPlanEstudio().getCodigo()+" creada con éxito");
         }
         else{
-            PlanEstudio newPlan = new PlanEstudio();
-            newPlan.setCarrera(carreraFacade.find(carreraSelected));
-            newPlan.setCodigo(codigo);
-            if(jornada.equals("diurno")){
-                newPlan.setJornada(0);
+            if(!(codigo == 0 || anioPlan < 1900  || resolucion == 0 || anio_resolucion < 1900) ){
+                PlanEstudio newPlan = new PlanEstudio();
+                newPlan.setCarrera(carreraFacade.find(carreraSelected));
+                newPlan.setCodigo(codigo);
+                if(jornada.equals("diurno")){
+                    newPlan.setJornada(0);
+                }
+                else{
+                    newPlan.setJornada(1);
+                }
+                VersionPlan vp = new VersionPlan();
+                vp.setAnio(anioPlan);
+                vp.setPlanEstudio(newPlan);
+                vp.setPlanificado(false);
+                vp.setVersion(1);
+                vp.setResolucion(resolucion);
+                vp.setAnio_resolucion(anio_resolucion);
+                vp.setId(1000L);
+                plan.create(newPlan);
+                version.create(vp);
+                JsfUtil.addSuccessMessage("Nuevo plan agregado correctamente");
+                carreraSelected = 0L;
+                idPlan = 0L;
+                
             }
             else{
-                newPlan.setJornada(1);
+                JsfUtil.addErrorMessage("Alguno de los parámetros indicados no es correcto");
             }
-            VersionPlan vp = new VersionPlan();
-            vp.setAnio(anioPlan);
-            vp.setPlanEstudio(newPlan);
-            vp.setPlanificado(false);
-            vp.setVersion(1);
-            vp.setResolucion(resolucion);
-            vp.setAnio_resolucion(anio_resolucion);
-            vp.setId(1000L);
-            plan.create(newPlan);
-            version.create(vp);
-            JsfUtil.addSuccessMessage("Nuevo plan agregado correctamente");
-            carreraSelected = 0L;
-            idPlan = 0L;
         }
     }
 }
